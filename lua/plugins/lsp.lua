@@ -11,7 +11,6 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
-          "eslint",
           "volar"
         }
       })
@@ -23,7 +22,6 @@ return {
       local lspconfig = require("lspconfig")
       -- LSP
       lspconfig.lua_ls.setup({})
-      lspconfig.eslint.setup({})
       lspconfig.volar.setup({})
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
