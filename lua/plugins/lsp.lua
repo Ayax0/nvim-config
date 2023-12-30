@@ -12,6 +12,7 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"volar",
+					"cssmodules_ls",
 				},
 			})
 		end,
@@ -27,6 +28,9 @@ return {
 				capabilities = capabilities,
 			})
 			lspconfig.volar.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.cssmodules_ls.setup({
 				capabilities = capabilities,
 			})
 
