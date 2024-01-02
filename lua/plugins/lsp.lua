@@ -30,6 +30,7 @@ return {
       })
       lspconfig.volar.setup({
         capabilities = capabilities,
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
       })
       lspconfig.cssmodules_ls.setup({
         capabilities = capabilities,
