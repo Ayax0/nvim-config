@@ -6,6 +6,7 @@ return {
       start_in_insert = false,
     });
 
-    vim.keymap.set('n', '<C-t>', ':ToggleTerm direction=float name=terminal<CR>', {})
+    vim.keymap.set('n', '<C-t>', ':ToggleTerm direction=float name=terminal<CR>', {});
+    vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {});
   end
 }
