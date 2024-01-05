@@ -1,41 +1,26 @@
 return {
-  {
-    "jay-babu/mason-null-ls.nvim",
-    config = function()
-      require("mason-null-ls").setup({
-        ensure_installed = {
-          "stylua",
-          "eslint_d",
-        },
-      })
-    end
+  "nvimtools/none-ls.nvim",
+  dependencies = {
+    { "jay-babu/mason-null-ls.nvim" }
   },
-  {
-    "nvimtools/none-ls.nvim",
-    config = function()
-      local null_ls = require("null-ls")
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.formatting.stylua,
+  config = function()
+    local none_ls_mason = require("mason-null-ls");
+    local none_ls = require("null-ls");
 
-          null_ls.builtins.formatting.eslint_d,
-          null_ls.builtins.diagnostics.eslint_d,
-        },
-        on_attach = function(client, bufnr)
-          if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-                -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-                vim.lsp.buf.format({ bufnr = bufnr })
-              end,
-            })
-          end
-        end,
-      })
-    end,
-  },
+    none_ls_mason.setup({
+      ensure_installed = {
+        "stylua",
+        "eslint_d",
+      }
+    })
+
+    none_ls.setup({
+      sources = {
+        none_ls.builtins.formatting.stylua,
+
+        none_ls.builtins.formatting.eslint_d,
+        none_ls.builtins.diagnostics.eslint_d,
+      },
+    })
+  end,
 }
