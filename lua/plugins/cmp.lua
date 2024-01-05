@@ -27,8 +27,11 @@ return {
     cmp.setup({
       enabled = function()
         -- disables in comments
-        local context = require("cmp.config.context")
-        if vim.api.nvim_get_mode().mode == "c" then
+        local buftype = vim.api.nvim_buf_get_option(0, "buftype");
+        local context = require("cmp.config.context");
+        if buftype == "prompt" then
+          return false
+        elseif vim.api.nvim_get_mode().mode == "c" then
           return true
         else
           return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
