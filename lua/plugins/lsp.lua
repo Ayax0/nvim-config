@@ -32,7 +32,6 @@ return {
         ["lua_ls"] = { "lua" },
         ["null_ls"] = {
           "volar",
-          "emmet_ls",
           "cssmodules_ls"
         }
       },
