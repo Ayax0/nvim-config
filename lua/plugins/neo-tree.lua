@@ -10,10 +10,17 @@ return {
     require("neo-tree").setup({
       filesystem = {
         filtered_items = {
-          visible = true,
-          hide_dotfile = false
+          hide_dotfiles = false,
+          hide_gitignored = false,
+          hide_by_name = {
+            ".git",
+            "node_modules"
+          }
+        },
+        follow_current_file = {
+          enabled = true
         }
-      }
+      },
     })
 
     vim.keymap.set('n', '<C-n>', ':Neotree filesystem reveal left<CR>', {})
