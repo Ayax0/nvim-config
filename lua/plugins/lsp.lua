@@ -23,19 +23,24 @@ return {
       lineFoldingOnly = true
     }
 
-    lsp.format_on_save({
-      format_opts = {
-        async = false,
-        timeout_ms = 10000,
-      },
-      servers = {
-        ["lua_ls"] = { "lua" },
-        ["null_ls"] = {
-          "volar",
-          "cssmodules_ls"
-        }
-      },
+    local lspconfig = require("lspconfig");
+    lspconfig.volar.setup({
+      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
     })
+
+    -- lsp.format_on_save({
+    --   format_opts = {
+    --     async = false,
+    --     timeout_ms = 10000,
+    --   },
+    --   servers = {
+    --     ["lua_ls"] = { "lua" },
+    --     ["null_ls"] = {
+    --       "volar",
+    --       "cssmodules_ls"
+    --     }
+    --   },
+    -- })
 
     lsp.setup();
   end
