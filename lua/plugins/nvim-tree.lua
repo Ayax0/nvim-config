@@ -14,15 +14,8 @@ return {
       filters = {
         dotfiles = true,
       },
-      on_attach = function(bufnr)
-        local api = require("nvim-tree.api")
-        api.config.mappings.default_on_attach(bufnr)
-
-        vim.keymap.set("n", "<C-t>", "", { buffer = bufnr })
-        vim.keymap.del("n", "<C-t>", { buffer = bufnr })
-      end,
     })
 
-    vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", {})
+    vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", {})
   end,
 }
