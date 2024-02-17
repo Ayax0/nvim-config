@@ -4,6 +4,8 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
+    local api = require("nvim-tree.api")
+
     require("nvim-tree").setup({
       view = {
         width = 40,
@@ -15,7 +17,6 @@ return {
         dotfiles = true,
       },
       on_attach = function(bufnr)
-        local api = require("nvim-tree.api")
         api.config.mappings.default_on_attach(bufnr)
 
         vim.keymap.set("n", "<C-t>", "", { buffer = bufnr })
@@ -24,5 +25,6 @@ return {
     })
 
     vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", {})
+    vim.keymap.set("n", "v", api.node.open.vertical, {})
   end,
 }
