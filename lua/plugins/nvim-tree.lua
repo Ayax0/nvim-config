@@ -14,7 +14,7 @@ return {
 				group_empty = true,
 			},
 			filters = {
-				dotfiles = true,
+				dotfiles = false,
 			},
 			on_attach = function(bufnr)
 				api.config.mappings.default_on_attach(bufnr)
